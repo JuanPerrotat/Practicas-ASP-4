@@ -3,8 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%--  
-        public bool Importado { get; set; }--%>
 
     <div class="row">
         <div class="col-6">
@@ -28,13 +26,16 @@
                 <label for="txtFecha" class="form-label">Fecha</label>
                 <asp:TextBox ID="txtFecha" TextMode="Date" CssClass="form-control" runat="server" />
             </div>
-                <asp:CheckBox Text="" ID="chkUsado" runat="server" />
-                <asp:Label Text="Usado" CssClass="form-check-label" runat="server" />
+            <asp:CheckBox Text="" ID="chkUsado" runat="server" />
+            <asp:Label Text="Usado" CssClass="form-check-label" runat="server" />
             <div class="mb-3">
-                <asp:RadioButton id="rbtnImportado" Text="Importado" runat="server" GroupName="Origen"/>
-                <asp:RadioButton id="rbtnNacional" Text="Nacional" Checked="true" runat="server" GroupName="Origen" />
+                <asp:RadioButton ID="rbtnImportado" AutoPostBack="true" OnCheckedChanged="rbtnImportado_CheckedChanged" Text="Importado" runat="server" GroupName="Origen" />
+                <asp:RadioButton ID="rbtnNacional" AutoPostBack="true" OnCheckedChanged="rbtnImportado_CheckedChanged" Text="Nacional" Checked="true" runat="server" GroupName="Origen" />
             </div>
-            
+            <div class="mb-3">
+                <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
+                <a href="Default.aspx">Cancelar</a>
+            </div>
         </div>
     </div>
 

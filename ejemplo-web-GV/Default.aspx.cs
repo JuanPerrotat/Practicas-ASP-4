@@ -12,9 +12,14 @@ namespace ejemplo_web_GV
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            AutoNegocio negocio = new AutoNegocio();
-            dgvAutos.DataSource = negocio.Listar();
-            dgvAutos.DataBind();
+            
+            if(Session["listaAutos"] == null)
+            {
+                AutoNegocio negocio = new AutoNegocio();
+                Session.Add("listaAutos", negocio.Listar());
+            }
+                dgvAutos.DataSource = Session["listaAutos"];
+                dgvAutos.DataBind();
         }
     }
 }
