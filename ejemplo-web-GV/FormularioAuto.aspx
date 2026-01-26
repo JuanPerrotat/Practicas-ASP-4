@@ -34,6 +34,8 @@
             </div>
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
+                <asp:Button Text="Modificar" ID="btnModificar" CssClass="btn btn-primary" runat="server" />
+                <asp:Button Text="Eliminar" ID="btnEliminar" CssClass="btn btn-primary" runat="server" />
                 <a href="Default.aspx">Cancelar</a>
             </div>
         </div>

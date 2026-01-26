@@ -18,8 +18,31 @@ namespace ejemplo_web_GV
                 ddlColores.Items.Add("Rojo");
                 ddlColores.Items.Add("Blanco");
                 ddlColores.Items.Add("Azul");
+            }
 
+            if (Request.QueryString["id"] != null)
+            {
+                int id = int.Parse(Request.QueryString["id"].ToString());
+                List<Auto> temporal = (List<Auto>)Session["listaAutos"];
+                Auto seleccionado = temporal.Find(x => x.Id == id);
+                txtModelo.Text = seleccionado.Modelo;
+                txtID.Text = seleccionado.Id.ToString();
+                txtID.ReadOnly = true;
+                txtDescripcion.Text = seleccionado.Descripcion;
+                ddlColores.SelectedValue = seleccionado.Color;
+                txtFecha.Text = seleccionado.Fecha.ToString("yyyy-MM-dd");
+                chkUsado.Checked = seleccionado.Usado;
+                if (seleccionado.Importado)
+                    rbtnImportado.Checked = true;
+                else
+                    rbtnNacional.Checked = true;
 
+                btnAceptar.Enabled = false;
+            }
+            else
+            {
+                btnEliminar.Enabled = false;
+                btnModificar.Enabled = false;
             }
         }
 
